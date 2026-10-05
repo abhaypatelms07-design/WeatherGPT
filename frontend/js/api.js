@@ -1,10 +1,9 @@
 /**
  * api.js - All WeatherGPT backend communication
  * Base URL points to the deployed Render backend.
- * Replace RENDER_URL_HERE with your actual Render URL after deploying.
  */
 
-const API_BASE = 'https://RENDER_URL_HERE.onrender.com';
+const API_BASE = 'https://weathergpt-dcq6.onrender.com';
 
 /**
  * Check backend health
