@@ -1,0 +1,33 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.7, pytest-9.1.1, pluggy-1.6.0 -- C:\Users\Dell\OneDrive\Desktop\Weather gpt\weathergpt\venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Dell\OneDrive\Desktop\Weather gpt\weathergpt
+plugins: anyio-4.15.1, asyncio-1.4.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 17 items
+
+tests/test_alerts.py::test_no_alert_normal_conditions PASSED             [  5%]
+tests/test_alerts.py::test_heavy_rain_alert PASSED                       [ 11%]
+tests/test_alerts.py::test_moderate_rain_alert PASSED                    [ 17%]
+tests/test_alerts.py::test_strong_wind_high PASSED                       [ 23%]
+tests/test_alerts.py::test_extreme_heat_alert PASSED                     [ 29%]
+tests/test_alerts.py::test_cold_wave_alert PASSED                        [ 35%]
+tests/test_alerts.py::test_alerts_missing_params PASSED                  [ 41%]
+tests/test_alerts.py::test_alerts_invalid_latitude PASSED                [ 47%]
+tests/test_alerts.py::test_alerts_valid_request PASSED                   [ 52%]
+tests/test_chat.py::test_chat_missing_fields PASSED                      [ 58%]
+tests/test_chat.py::test_chat_invalid_latitude PASSED                    [ 64%]
+tests/test_chat.py::test_chat_response_shape PASSED                      [ 70%]
+tests/test_weather.py::test_health_still_works PASSED                    [ 76%]
+tests/test_weather.py::test_weather_invalid_latitude PASSED              [ 82%]
+tests/test_weather.py::test_weather_invalid_longitude PASSED             [ 88%]
+tests/test_weather.py::test_weather_missing_params PASSED                [ 94%]
+tests/test_weather.py::test_weather_valid_request PASSED                 [100%]
+
+============================== warnings summary ===============================
+venv\Lib\site-packages\starlette\testclient.py:53
+  C:\Users\Dell\OneDrive\Desktop\Weather gpt\weathergpt\venv\Lib\site-packages\starlette\testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================= 17 passed, 1 warning in 13.60s ========================

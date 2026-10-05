@@ -1,0 +1,2141 @@
+/* ============================================================
+   WeatherGPT – style.css
+   Mobile-first, max 480px centered on desktop
+   ============================================================ */
+
+/* ── Reset & Base ────────────────────────────────────────── */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+    background: #F0F4FF;
+    color: #1A1A2E;
+    min-height: 100vh;
+}
+
+/* ── App Container ───────────────────────────────────────── */
+.app-container {
+    max-width: 480px;
+    margin: 0 auto;
+    min-height: 100vh;
+    background: white;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ── Screens ─────────────────────────────────────────────── */
+.screen {
+    display: none;
+    flex-direction: column;
+    min-height: calc(100vh - 64px);
+}
+
+.screen.active {
+    display: flex;
+}
+
+/* ── Top Bar ─────────────────────────────────────────────── */
+.top-bar {
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+.top-bar h1 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1A1A2E;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #1A1A2E;
+    padding: 4px;
+    line-height: 1;
+}
+
+/* ── Bottom Navigation ───────────────────────────────────── */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 480px;
+    background: white;
+    border-top: 1px solid #E8ECF0;
+    display: flex;
+    padding: 8px 0 20px;
+    z-index: 100;
+}
+
+.nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: inherit;
+}
+
+.nav-item span {
+    font-size: 10px;
+    color: #636E72;
+    transition: color 0.15s;
+}
+
+.nav-item.active span,
+.nav-item.active .nav-icon {
+    color: #2E86DE;
+}
+
+.nav-icon {
+    font-size: 22px;
+    line-height: 1;
+    transition: color 0.15s;
+}
+
+/* ── Cards ───────────────────────────────────────────────── */
+.card {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 16px;
+}
+
+/* ── Weather Hero Card (Home / Weather) ──────────────────── */
+.weather-hero {
+    background: linear-gradient(135deg, #2E86DE, #74B9FF);
+    border-radius: 20px;
+    padding: 28px 24px;
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.hero-temp {
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.hero-condition {
+    font-size: 18px;
+    opacity: 0.9;
+    margin-top: 4px;
+}
+
+.hero-location {
+    font-size: 14px;
+    opacity: 0.8;
+    margin-top: 8px;
+}
+
+/* ── Weather Details Grid ────────────────────────────────── */
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.detail-item {
+    background: #F8FBFF;
+    border-radius: 12px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.detail-label {
+    font-size: 12px;
+    color: #636E72;
+}
+
+.detail-value {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1A1A2E;
+}
+
+/* ── Forecast List ───────────────────────────────────────── */
+.forecast-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.forecast-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    background: #F8FBFF;
+    border-radius: 12px;
+}
+
+.forecast-date {
+    flex: 1;
+    font-size: 14px;
+    color: #636E72;
+}
+
+.forecast-condition {
+    flex: 2;
+    font-size: 14px;
+    color: #1A1A2E;
+}
+
+.forecast-temp {
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* ── Chat Screen ─────────────────────────────────────────── */
+.chat-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-bottom: 80px;
+}
+
+.chat-bubble {
+    max-width: 80%;
+    padding: 12px 16px;
+    border-radius: 16px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.chat-bubble.user {
+    background: #2E86DE;
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+}
+
+.chat-bubble.assistant {
+    background: white;
+    color: #1A1A2E;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.chat-input-bar {
+    position: fixed;
+    bottom: 64px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 480px;
+    background: white;
+    border-top: 1px solid #E8ECF0;
+    padding: 12px 16px;
+    display: flex;
+    gap: 10px;
+    z-index: 99;
+}
+
+.chat-input {
+    flex: 1;
+    border: 1.5px solid #E0E8F0;
+    border-radius: 24px;
+    padding: 10px 16px;
+    font-size: 14px;
+    outline: none;
+    font-family: inherit;
+    background: white;
+    color: #1A1A2E;
+}
+
+.chat-input:focus {
+    border-color: #2E86DE;
+}
+
+.chat-send-btn {
+    background: #2E86DE;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.15s;
+}
+
+.chat-send-btn:hover {
+    background: #1a6fc4;
+}
+
+/* ── Alerts ──────────────────────────────────────────────── */
+.alert-card {
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 16px;
+}
+
+.alert-card.high {
+    background: #FFF5F5;
+    border-left: 4px solid #D63031;
+}
+
+.alert-card.medium {
+    background: #FFFBF0;
+    border-left: 4px solid #FDCB6E;
+}
+
+.alert-card.low {
+    background: #F0FFF4;
+    border-left: 4px solid #00B894;
+}
+
+.alert-card.none {
+    background: #F8FBFF;
+    border-left: 4px solid #74B9FF;
+}
+
+.alert-type {
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin-bottom: 6px;
+    color: #1A1A2E;
+}
+
+.alert-message {
+    font-size: 14px;
+    color: #636E72;
+    line-height: 1.5;
+}
+
+/* ── Loading / Error / Empty States ─────────────────────── */
+.loading-state,
+.error-state,
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    gap: 12px;
+    text-align: center;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #E0E8F0;
+    border-top-color: #2E86DE;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+.retry-btn {
+    background: #2E86DE;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 24px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    transition: background 0.15s;
+}
+
+.retry-btn:hover {
+    background: #1a6fc4;
+}
+
+/* ── Mode / Language Selector (Chat) ─────────────────────── */
+.chat-options {
+    display: flex;
+    gap: 8px;
+    padding: 8px 16px;
+    overflow-x: auto;
+}
+
+.option-chip {
+    border: 1.5px solid #E0E8F0;
+    background: white;
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 12px;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: inherit;
+    color: #636E72;
+    transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+
+.option-chip.active {
+    border-color: #2E86DE;
+    background: #EBF5FF;
+    color: #2E86DE;
+}
+
+/* ── Scrollable Content Area ─────────────────────────────── */
+.screen-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 16px 80px;
+}
+
+/* ── Section Headers ─────────────────────────────────────── */
+.section-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #1A1A2E;
+}
+
+/* ── Splash Screen (Page 1) ──────────────────────────────── */
+.splash-screen {
+    min-height: 100vh;
+    height: 100vh;
+    padding: 44px 24px 32px;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(170deg, #07152B 0%, #0D274D 30%, #153E75 60%, #1B5699 85%, #2570BE 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    user-select: none;
+    transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+    box-sizing: border-box;
+    z-index: 50;
+}
+
+.splash-screen.active {
+    display: flex;
+}
+
+.splash-screen.fade-out {
+    opacity: 0;
+    transform: scale(1.02);
+    pointer-events: none;
+}
+
+/* Ambient glow accents */
+.splash-ambient-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    pointer-events: none;
+    opacity: 0.35;
+}
+
+.glow-1 {
+    width: 220px;
+    height: 220px;
+    top: -40px;
+    right: -40px;
+    background: radial-gradient(circle, #FFA114 0%, transparent 70%);
+}
+
+.glow-2 {
+    width: 260px;
+    height: 260px;
+    bottom: 80px;
+    left: -60px;
+    background: radial-gradient(circle, #0080FF 0%, transparent 70%);
+}
+
+/* Top Badge */
+.splash-top-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    z-index: 1;
+}
+
+.badge-dot {
+    width: 7px;
+    height: 7px;
+    background: #00E676;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #00E676;
+    display: inline-block;
+}
+
+/* Center Content */
+.splash-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+    margin: auto 0;
+}
+
+.splash-illustration-wrap {
+    width: 170px;
+    height: 150px;
+    margin-bottom: 24px;
+    animation: splashFloat 3.5s ease-in-out infinite;
+}
+
+.splash-illustration {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 12px 28px rgba(0, 30, 80, 0.5));
+}
+
+@keyframes splashFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.splash-brand-title {
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+    margin-bottom: 10px;
+}
+
+.brand-weather {
+    color: #FFFFFF;
+}
+
+.brand-gpt {
+    color: #FF4757;
+    margin-left: 2px;
+}
+
+.splash-tagline {
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 0.2px;
+    margin-bottom: 6px;
+}
+
+.splash-motto {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+    letter-spacing: 0.3px;
+}
+
+/* Bottom elements */
+.splash-bottom {
+    width: 100%;
+    max-width: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    z-index: 1;
+}
+
+.splash-loader-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.splash-loader-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #38B6FF, #FF4757);
+    border-radius: 4px;
+    animation: splashFill 2.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes splashFill {
+    0% { width: 0%; }
+    40% { width: 45%; }
+    80% { width: 85%; }
+    100% { width: 100%; }
+}
+
+.splash-team {
+    font-size: 11px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.splash-team strong {
+    color: #FFFFFF;
+    letter-spacing: 2px;
+}
+
+.splash-hint {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.5px;
+}
+
+/* ── Auth Screen (Page 2 — Create Account) ────────────────── */
+.auth-screen {
+    min-height: 100vh;
+    background: #FFFFFF;
+    display: none;
+    flex-direction: column;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.auth-screen.active {
+    display: flex;
+}
+
+.auth-top-bar {
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #F0F4F8;
+    background: #FFFFFF;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.auth-brand-mini {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.auth-skip-btn {
+    background: none;
+    border: none;
+    color: #2E86DE;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 4px 8px;
+}
+
+.auth-content {
+    flex: 1;
+    padding: 24px 20px 40px;
+    max-width: 440px;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.auth-header {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.auth-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1A1A2E;
+    margin-bottom: 6px;
+}
+
+.auth-header p {
+    font-size: 13px;
+    color: #636E72;
+    line-height: 1.5;
+}
+
+.auth-input-group {
+    margin-bottom: 16px;
+    text-align: left;
+}
+
+.auth-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #2D3436;
+    margin-bottom: 6px;
+}
+
+.auth-input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.auth-input {
+    width: 100%;
+    padding: 12px 14px 12px 38px;
+    border: 1.5px solid #E0E8F0;
+    border-radius: 12px;
+    font-size: 14px;
+    font-family: inherit;
+    color: #1A1A2E;
+    background: #F8FBFF;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.auth-input:focus {
+    border-color: #2E86DE;
+    background: #FFFFFF;
+}
+
+.auth-input-icon {
+    position: absolute;
+    left: 12px;
+    font-size: 15px;
+    color: #636E72;
+    pointer-events: none;
+}
+
+.auth-toggle-pwd {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 2px;
+    line-height: 1;
+}
+
+/* Persona Chips */
+.persona-selector {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-top: 6px;
+}
+
+.persona-chip {
+    padding: 10px 8px;
+    border: 1.5px solid #E0E8F0;
+    border-radius: 12px;
+    background: #F8FBFF;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #2D3436;
+    transition: all 0.15s ease;
+    text-align: center;
+}
+
+.persona-chip:hover {
+    border-color: #74B9FF;
+}
+
+.persona-chip.selected {
+    border-color: #2E86DE;
+    background: #EBF5FF;
+    color: #2E86DE;
+}
+
+.persona-icon {
+    font-size: 20px;
+    line-height: 1;
+}
+
+.persona-sub {
+    font-size: 10px;
+    font-weight: 400;
+    color: #636E72;
+}
+
+.persona-chip.selected .persona-sub {
+    color: #2E86DE;
+}
+
+/* Terms checkbox */
+.auth-terms-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.auth-checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 12px;
+    color: #636E72;
+    line-height: 1.4;
+    cursor: pointer;
+}
+
+.auth-checkbox-label input {
+    margin-top: 2px;
+    cursor: pointer;
+}
+
+.auth-checkbox-label a {
+    color: #2E86DE;
+    text-decoration: none;
+}
+
+/* Submit and Action Buttons */
+.auth-submit-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #1B64DA 0%, #2E86DE 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(46, 134, 222, 0.35);
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.auth-submit-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(46, 134, 222, 0.45);
+}
+
+.auth-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0 16px;
+    color: #A4B0BE;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #E8ECF0;
+}
+
+.auth-divider span {
+    padding: 0 12px;
+}
+
+.auth-guest-btn {
+    width: 100%;
+    padding: 12px;
+    background: #F0F4F8;
+    color: #2D3436;
+    border: 1px solid #DFE6E9;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.auth-guest-btn:hover {
+    background: #E4EBF2;
+}
+
+.auth-footer-prompt {
+    margin-top: 24px;
+    font-size: 13px;
+    color: #636E72;
+    text-align: center;
+}
+
+.auth-footer-prompt a {
+    color: #2E86DE;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* Error message */
+.auth-error-msg {
+    background: #FFEAEA;
+    color: #D63031;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 16px;
+    display: none;
+    text-align: left;
+    border-left: 3px solid #D63031;
+}
+
+/* Demo Credentials Hint Chip */
+.demo-credential-chip {
+    background: #EBF5FF;
+    border: 1px dashed #74B9FF;
+    border-radius: 10px;
+    padding: 8px 12px;
+    margin-bottom: 16px;
+    font-size: 11px;
+    color: #1A5CA4;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: background 0.15s;
+}
+
+.demo-credential-chip:hover {
+    background: #D9ECFF;
+}
+
+/* Auth Options Row (Remember me + Forgot password) */
+.auth-options-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 12px;
+}
+
+.auth-forgot-link {
+    color: #2E86DE;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.auth-forgot-link:hover {
+    text-decoration: underline;
+}
+
+/* Page 3 Auth Tabs (Log In / Sign Up Switcher) */
+.auth-tabs {
+    display: flex;
+    background: #F0F4F8;
+    border-radius: 12px;
+    padding: 4px;
+    margin-bottom: 20px;
+    gap: 4px;
+}
+
+.auth-tab-btn {
+    flex: 1;
+    padding: 10px 14px;
+    border: none;
+    background: none;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #636E72;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s ease;
+}
+
+.auth-tab-btn:hover {
+    color: #1A1A2E;
+}
+
+.auth-tab-btn.active {
+    background: #FFFFFF;
+    color: #1A1A2E;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.auth-tab-content {
+    animation: fadeIn 0.25s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Page 11: Climate Trends & Historical Insights ────────── */
+.timeframe-tabs {
+    display: flex;
+    background: #F0F4F8;
+    border-radius: 12px;
+    padding: 4px;
+    margin-bottom: 16px;
+    gap: 4px;
+}
+
+.timeframe-tab-btn {
+    flex: 1;
+    padding: 9px 12px;
+    border: none;
+    background: none;
+    border-radius: 9px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #636E72;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.timeframe-tab-btn:hover {
+    color: #1A1A2E;
+}
+
+.timeframe-tab-btn.active {
+    background: #FFFFFF;
+    color: #2E86DE;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.climate-stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.climate-stat-card {
+    background: #F8FBFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.climate-stat-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #64748B;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.climate-stat-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1E293B;
+}
+
+.climate-stat-sub {
+    font-size: 11px;
+    color: #94A3B8;
+}
+
+/* ── Responsive: full-width on small screens ─────────────── */
+@media (max-width: 480px) {
+    .app-container {
+        max-width: 100%;
+    }
+
+    .bottom-nav {
+        max-width: 100%;
+    }
+
+    .chat-input-bar {
+        max-width: 100%;
+    }
+}
+
+/* ══════════════════════════════════════════════════════════
+   PAGE 15 — DASHBOARD  (scoped .dashboard-* classes only)
+   Does not override any existing class.
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Dashboard screen wrapper ────────────────────────────── */
+.dashboard-screen {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    background: #F0F4FF;
+}
+
+/* ── Dashboard header ────────────────────────────────────── */
+.dashboard-header {
+    background: linear-gradient(160deg, #1246B0 0%, #1B64DA 45%, #2E86DE 100%);
+    padding: 44px 20px 36px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+/* Decorative ambient glow circles in header */
+.dashboard-header::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -40px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.dashboard-header::after {
+    content: '';
+    position: absolute;
+    bottom: -18px;
+    left: 0;
+    right: 0;
+    height: 36px;
+    background: #F0F4FF;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+
+.dashboard-header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+    position: relative;
+    z-index: 1;
+}
+
+.dashboard-brand {
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+    color: white;
+}
+
+.dashboard-brand .brand-gpt {
+    color: #FFD15C;
+}
+
+.dashboard-refresh-btn {
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.28);
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 15px;
+    color: white;
+    transition: background 0.15s, transform 0.15s;
+    flex-shrink: 0;
+}
+
+.dashboard-refresh-btn:hover {
+    background: rgba(255,255,255,0.30);
+    transform: rotate(30deg);
+}
+
+.dashboard-greeting {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    line-height: 1.2;
+    position: relative;
+    z-index: 1;
+}
+
+.dashboard-location {
+    font-size: 13px;
+    opacity: 0.88;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    position: relative;
+    z-index: 1;
+    font-weight: 500;
+}
+
+/* ── Dashboard body ──────────────────────────────────────── */
+.dashboard-body {
+    flex: 1;
+    padding: 18px 16px 96px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow-y: auto;
+}
+
+/* ── Dashboard weather main card ─────────────────────────── */
+.dashboard-weather-card {
+    background: white;
+    border-radius: 24px;
+    padding: 22px 20px 18px;
+    box-shadow: 0 6px 24px rgba(46,134,222,0.13);
+    border: 1px solid #E2EDFF;
+}
+
+.dashboard-weather-main {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.dashboard-temp-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.dashboard-temp {
+    font-size: 72px;
+    font-weight: 800;
+    color: #0F172A;
+    line-height: 1;
+    letter-spacing: -3px;
+}
+
+.dashboard-condition {
+    font-size: 16px;
+    color: #475569;
+    margin-top: 6px;
+    font-weight: 600;
+}
+
+.dashboard-feels {
+    font-size: 12px;
+    color: #94A3B8;
+    margin-top: 3px;
+    font-weight: 500;
+}
+
+.dashboard-weather-icon {
+    font-size: 80px;
+    line-height: 1;
+    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.12));
+    margin-top: -4px;
+}
+
+/* ── Dashboard weather details grid ─────────────────────── */
+.dashboard-weather-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    border-top: 1px solid #F1F5F9;
+    padding-top: 16px;
+}
+
+.dashboard-detail-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #F8FAFF;
+    border-radius: 14px;
+    padding: 12px 14px;
+    border: 1px solid #EEF2FF;
+}
+
+.dashboard-detail-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.dashboard-detail-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.dashboard-detail-label {
+    font-size: 10px;
+    color: #94A3B8;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.dashboard-detail-value {
+    font-size: 15px;
+    font-weight: 800;
+    color: #0F172A;
+}
+
+/* ── Dashboard advisory card ─────────────────────────────── */
+.dashboard-advisory {
+    border-radius: 18px;
+    padding: 16px 18px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.dashboard-advisory.advisory-high {
+    background: linear-gradient(135deg, #FFF1F2 0%, #FFE4E6 100%);
+    border: 1.5px solid #FECDD3;
+}
+
+.dashboard-advisory.advisory-medium {
+    background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+    border: 1.5px solid #FDE68A;
+}
+
+.dashboard-advisory.advisory-low {
+    background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%);
+    border: 1.5px solid #BBF7D0;
+}
+
+.dashboard-advisory.advisory-none {
+    background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+    border: 1.5px solid #BFDBFE;
+}
+
+.dashboard-advisory-icon {
+    font-size: 30px;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.dashboard-advisory-content {
+    flex: 1;
+}
+
+.dashboard-advisory-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    line-height: 1.3;
+}
+
+.dashboard-advisory.advisory-high   .dashboard-advisory-title { color: #BE123C; }
+.dashboard-advisory.advisory-medium .dashboard-advisory-title { color: #92400E; }
+.dashboard-advisory.advisory-low    .dashboard-advisory-title { color: #14532D; }
+.dashboard-advisory.advisory-none   .dashboard-advisory-title { color: #1E40AF; }
+
+.dashboard-advisory-msg {
+    font-size: 12px;
+    line-height: 1.55;
+    color: #475569;
+}
+
+/* ── Dashboard section header ────────────────────────────── */
+.dashboard-section-label {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0F172A;
+}
+
+/* ── Dashboard forecast strip ────────────────────────────── */
+.dashboard-forecast-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.dashboard-forecast-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0F172A;
+}
+
+.dashboard-forecast-viewall {
+    font-size: 12px;
+    font-weight: 600;
+    color: #2E86DE;
+    background: #EBF5FF;
+    border: none;
+    cursor: pointer;
+    padding: 5px 12px;
+    font-family: inherit;
+    border-radius: 20px;
+    transition: background 0.15s;
+}
+
+.dashboard-forecast-viewall:hover {
+    background: #BFDBFE;
+}
+
+.dashboard-forecast-strip {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.dashboard-forecast-strip::-webkit-scrollbar {
+    display: none;
+}
+
+.dashboard-forecast-card {
+    flex-shrink: 0;
+    background: white;
+    border-radius: 16px;
+    padding: 14px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    min-width: 82px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    border: 1px solid #E2EDFF;
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.dashboard-forecast-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(46,134,222,0.14);
+}
+
+.dashboard-forecast-card.today {
+    background: linear-gradient(160deg, #1B64DA 0%, #2E86DE 100%);
+    border-color: transparent;
+    box-shadow: 0 4px 14px rgba(46,134,222,0.35);
+}
+
+.dashboard-forecast-day {
+    font-size: 10px;
+    font-weight: 700;
+    color: #64748B;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.dashboard-forecast-card.today .dashboard-forecast-day {
+    color: rgba(255,255,255,0.82);
+}
+
+.dashboard-forecast-icon {
+    font-size: 24px;
+    line-height: 1;
+}
+
+.dashboard-forecast-temp {
+    font-size: 14px;
+    font-weight: 800;
+    color: #0F172A;
+}
+
+.dashboard-forecast-card.today .dashboard-forecast-temp {
+    color: white;
+}
+
+.dashboard-forecast-rain {
+    font-size: 10px;
+    color: #60A5FA;
+    font-weight: 600;
+    background: #EFF6FF;
+    padding: 2px 7px;
+    border-radius: 10px;
+}
+
+.dashboard-forecast-card.today .dashboard-forecast-rain {
+    color: rgba(255,255,255,0.9);
+    background: rgba(255,255,255,0.18);
+}
+
+/* ── Dashboard quick actions ─────────────────────────────── */
+.dashboard-actions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.dashboard-action-btn {
+    background: white;
+    border: 1px solid #E2EDFF;
+    border-radius: 18px;
+    padding: 16px 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    text-align: left;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.dashboard-action-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(46,134,222,0.12);
+    border-color: #BFDBFE;
+}
+
+.dashboard-action-icon {
+    font-size: 26px;
+    line-height: 1;
+}
+
+.dashboard-action-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #0F172A;
+    line-height: 1.2;
+}
+
+.dashboard-action-sub {
+    font-size: 11px;
+    color: #94A3B8;
+    font-weight: 500;
+}
+
+/* ── Responsive breakpoints ──────────────────────────────── */
+@media (min-width: 481px) {
+    .dashboard-actions-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .dashboard-weather-details {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .dashboard-body {
+        padding-bottom: 100px;
+    }
+}
+
+@media (min-width: 768px) {
+    .dashboard-header {
+        padding: 52px 32px 44px;
+    }
+    .dashboard-body {
+        padding: 24px 32px 104px;
+        gap: 20px;
+    }
+    .dashboard-greeting {
+        font-size: 28px;
+    }
+    .dashboard-temp {
+        font-size: 80px;
+    }
+    .dashboard-weather-icon {
+        font-size: 96px;
+    }
+    .dashboard-actions-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* ── Bottom nav 6-item adjustment ────────────────────────── */
+/* When 6 items are present the nav needs smaller items to prevent clipping */
+.bottom-nav .nav-item span {
+    font-size: 9px;
+}
+.bottom-nav .nav-icon {
+    font-size: 20px;
+}
+
+/* ══════════════════════════════════════════════════════════
+   PAGE 16 — PROFILE / SETTINGS  (.profile-* scoped only)
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Profile screen background ──────────────────────────── */
+.profile-screen {
+    background: #F0F4FF;
+    min-height: 100%;
+}
+
+/* ── Profile header card ─────────────────────────────────── */
+.profile-header-card {
+    background: linear-gradient(160deg, #1246B0 0%, #1B64DA 50%, #2E86DE 100%);
+    padding: 44px 20px 32px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.profile-header-card::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 180px;
+    height: 180px;
+    background: radial-gradient(circle, rgba(255,255,255,0.10) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.profile-header-card::after {
+    content: '';
+    position: absolute;
+    bottom: -18px;
+    left: 0;
+    right: 0;
+    height: 36px;
+    background: #F0F4FF;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+
+.profile-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.profile-back-btn {
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.28);
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+    transition: background 0.15s;
+    font-family: inherit;
+}
+
+.profile-back-btn:hover {
+    background: rgba(255,255,255,0.30);
+}
+
+.profile-title-text {
+    font-size: 17px;
+    font-weight: 700;
+    color: white;
+}
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.22);
+    border: 3px solid rgba(255,255,255,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    margin: 0 auto 14px;
+    position: relative;
+    z-index: 1;
+}
+
+.profile-name {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    position: relative;
+    z-index: 1;
+}
+
+.profile-email {
+    font-size: 13px;
+    opacity: 0.82;
+    margin-bottom: 4px;
+    position: relative;
+    z-index: 1;
+}
+
+.profile-persona-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.20);
+    border: 1px solid rgba(255,255,255,0.30);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+    margin-top: 4px;
+}
+
+/* ── Profile body ────────────────────────────────────────── */
+.profile-body {
+    padding: 20px 16px 96px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* ── Profile section card ────────────────────────────────── */
+.profile-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(46,134,222,0.08);
+    border: 1px solid #E2EDFF;
+}
+
+.profile-card-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #94A3B8;
+    padding: 14px 16px 8px;
+}
+
+/* ── Profile row (a single setting row) ──────────────────── */
+.profile-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    border-top: 1px solid #F1F5F9;
+    gap: 12px;
+}
+
+.profile-row:first-of-type {
+    border-top: none;
+}
+
+.profile-row-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+}
+
+.profile-row-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F0F4FF;
+    border-radius: 10px;
+}
+
+.profile-row-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    min-width: 0;
+}
+
+.profile-row-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0F172A;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.profile-row-sub {
+    font-size: 12px;
+    color: #94A3B8;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ── Toggle switch ───────────────────────────────────────── */
+.profile-toggle {
+    position: relative;
+    width: 48px;
+    height: 28px;
+    flex-shrink: 0;
+}
+
+.profile-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+.profile-toggle-slider {
+    position: absolute;
+    inset: 0;
+    background: #CBD5E1;
+    border-radius: 28px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.profile-toggle-slider::before {
+    content: '';
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    left: 3px;
+    top: 3px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.2s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.18);
+}
+
+.profile-toggle input:checked + .profile-toggle-slider {
+    background: #2E86DE;
+}
+
+.profile-toggle input:checked + .profile-toggle-slider::before {
+    transform: translateX(20px);
+}
+
+/* ── Unit selector pills ─────────────────────────────────── */
+.profile-unit-pills {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.profile-unit-pill {
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1.5px solid #E2EDFF;
+    background: #F8FAFF;
+    color: #64748B;
+    font-family: inherit;
+    transition: all 0.15s;
+}
+
+.profile-unit-pill.active {
+    background: #2E86DE;
+    border-color: #2E86DE;
+    color: white;
+}
+
+/* ── Logout button ───────────────────────────────────────── */
+.profile-logout-btn {
+    width: 100%;
+    padding: 15px;
+    background: white;
+    color: #DC2626;
+    border: 1.5px solid #FECDD3;
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 2px 8px rgba(220,38,38,0.08);
+    transition: background 0.15s, transform 0.15s;
+}
+
+.profile-logout-btn:hover {
+    background: #FEF2F2;
+    transform: translateY(-1px);
+}
+
+/* ── About card ──────────────────────────────────────────── */
+.profile-about-logo {
+    font-size: 32px;
+    margin-bottom: 6px;
+}
+
+.profile-about-name {
+    font-size: 16px;
+    font-weight: 800;
+    color: #0F172A;
+    margin-bottom: 2px;
+}
+
+.profile-about-tagline {
+    font-size: 12px;
+    color: #64748B;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.profile-about-version {
+    display: inline-block;
+    background: #F0F4FF;
+    color: #2E86DE;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid #BFDBFE;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (min-width: 481px) {
+    .profile-body {
+        padding: 20px 24px 100px;
+    }
+}
+
+@media (min-width: 768px) {
+    .profile-header-card {
+        padding: 52px 32px 40px;
+    }
+    .profile-body {
+        padding: 24px 32px 104px;
+    }
+}
+
+/* ── Home header avatar circle ───────────────────────────── */
+.home-avatar-btn {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2E86DE, #1246B0);
+    border: 2px solid rgba(255,255,255,0.25);
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    box-shadow: 0 2px 8px rgba(46,134,222,0.35);
+    transition: transform 0.15s, box-shadow 0.15s;
+    letter-spacing: 0.5px;
+    user-select: none;
+    flex-shrink: 0;
+}
+
+.home-avatar-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 4px 14px rgba(46,134,222,0.50);
+}
+
+.home-avatar-btn:active {
+    transform: scale(0.96);
+}
+
+/* ══════════════════════════════════════════════════════════
+   LIVE WEATHER MAP SCREEN  (.lmap-* scoped — no existing
+   class is modified)
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Outer layout ────────────────────────────────────────── */
+.lmap-screen {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+    background: #F0F4FF;
+}
+
+/* ── Risk legend bar ─────────────────────────────────────── */
+.lmap-legend {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 8px 16px;
+    background: white;
+    border-bottom: 1px solid #E2EDFF;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+}
+
+.lmap-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #374151;
+}
+
+.lmap-legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.lmap-legend-dot.high   { background: #E53935; }
+.lmap-legend-dot.medium { background: #FB8C00; }
+.lmap-legend-dot.low    { background: #FDD835; }
+.lmap-legend-dot.safe   { background: #43A047; }
+
+/* ── Map tile container ──────────────────────────────────── */
+.lmap-tile {
+    flex: 1;
+    min-height: 0;
+    position: relative;
+}
+
+/* Ensure Leaflet container fills its parent */
+.lmap-tile .leaflet-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+}
+
+/* ── Info card overlay (weather at current location) ─────── */
+.lmap-info-card {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 32px);
+    max-width: 440px;
+    background: white;
+    border-radius: 18px;
+    padding: 14px 16px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    pointer-events: none;   /* let map scroll through it */
+}
+
+.lmap-info-icon {
+    font-size: 36px;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.lmap-info-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.lmap-info-location {
+    font-size: 13px;
+    font-weight: 700;
+    color: #0F172A;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 4px;
+}
+
+.lmap-info-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.lmap-info-chip {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 12px;
+    background: #F0F4FF;
+    color: #374151;
+}
+
+.lmap-risk-badge {
+    flex-shrink: 0;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 800;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.lmap-risk-badge.high   { background: #E53935; }
+.lmap-risk-badge.medium { background: #FB8C00; }
+.lmap-risk-badge.low    { background: #FDD835; color: #374151; }
+.lmap-risk-badge.safe   { background: #43A047; }
+
+/* ── Loading / error states inside the map screen ───────── */
+.lmap-status {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    gap: 12px;
+    text-align: center;
+    color: #636E72;
+    font-size: 14px;
+}
+
+/* ── Data-source note ────────────────────────────────────── */
+.lmap-source-note {
+    text-align: center;
+    font-size: 10px;
+    color: #94A3B8;
+    padding: 6px 16px;
+    background: white;
+    border-top: 1px solid #E2EDFF;
+    flex-shrink: 0;
+}
+
+/* ── Live Weather Map: height chain fix ──────────────────────
+   .screen only has min-height, not height — Leaflet's
+   height:100% resolves to 0 inside a flex chain without a
+   concrete pixel height on the ancestor. Setting an explicit
+   height here gives Leaflet a real measurement target.
+   Only screen-live-map is targeted — no other screen affected.
+   ─────────────────────────────────────────────────────────── */
+#screen-live-map {
+    height: calc(100vh - 64px);
+    max-height: calc(100vh - 64px);
+}
+
+#screen-live-map #live-map-content {
+    flex: 1;
+    height: 0;          /* flex child trick: forces 100% to resolve in flex */
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#screen-live-map .lmap-screen {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#screen-live-map .lmap-tile {
+    flex: 1;
+    height: 0;          /* same flex child trick */
+    min-height: 0;
+    position: relative;
+}
+
+/* The actual div Leaflet targets must have an explicit height */
+#lmap-leaflet-div {
+    width: 100%;
+    height: 100%;
+    min-height: 300px;  /* failsafe: always at least 300px even if chain breaks */
+}

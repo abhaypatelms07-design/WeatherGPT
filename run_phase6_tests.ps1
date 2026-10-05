@@ -1,0 +1,1 @@
+venv\Scripts\python.exe -m pytest tests/test_weather.py tests/test_chat.py tests/test_alerts.py tests/test_language.py tests/test_modes.py -v --tb=short 2>&1 | Tee-Object -FilePath tests/phase6_results.txt

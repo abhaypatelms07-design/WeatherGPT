@@ -1,0 +1,1 @@
+﻿Error: HTTPStatusError Client error '429 Too Many Requests' for url 'https://api.open-meteo.com/v1/forecast?latitude=28.61&longitude=77.23&current=temperature_2m&current=apparent_temperature&current=relative_humidity_2m&cur
