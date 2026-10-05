@@ -1,9 +1,10 @@
 /**
  * api.js - All WeatherGPT backend communication
- * Base URL points to FastAPI backend running on localhost:8000
+ * Base URL points to the deployed Render backend.
+ * Replace RENDER_URL_HERE with your actual Render URL after deploying.
  */
 
-const API_BASE = 'http://localhost:8000';
+const API_BASE = 'https://RENDER_URL_HERE.onrender.com';
 
 /**
  * Check backend health

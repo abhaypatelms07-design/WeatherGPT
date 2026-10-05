@@ -27,10 +27,14 @@ app = FastAPI(
     version="0.1.0",
 )
 
-# CORS — allows Flutter (or any client) to call this API from a different origin
+# CORS — allow requests from the deployed Vercel frontend and local dev
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Tighten this in production
+    allow_origins=[
+        "https://weather-gpt-frontend-five.vercel.app",
+        "http://localhost:8000",
+        "http://localhost:5500",
+    ],
     allow_methods=["*"],
     allow_headers=["*"],
 )
